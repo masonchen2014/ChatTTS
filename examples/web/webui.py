@@ -87,6 +87,13 @@ def main():
                 label="top_K",
                 interactive=True,
             )
+            speed_slider = gr.Slider(
+                minimum=1,
+                maximum=5,
+                step=1,
+                label="speed",
+                interactive=True,
+            )
 
         with gr.Row():
             voice_selection = gr.Dropdown(
@@ -223,6 +230,7 @@ def main():
                     audio_seed_input,
                     sample_text_input,
                     sample_audio_code_input,
+                    speed_slider,
                 ],
                 outputs=[audio_output,download_button]
             ).then(

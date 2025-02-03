@@ -166,6 +166,7 @@ def generate_audio(
     audio_seed_input,
     sample_text_input,
     sample_audio_code_input,
+    speed=1,
 ):
     global chat, has_interrupted
 
@@ -173,6 +174,7 @@ def generate_audio(
         return None
 
     params_infer_code = ChatTTS.Chat.InferCodeParams(
+        prompt=f"[speed_{speed}]",
         spk_emb=spk_emb_text,
         temperature=temperature,
         top_P=top_P,
