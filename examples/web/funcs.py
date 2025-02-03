@@ -1,6 +1,7 @@
 import random
 from typing import Optional
 from time import sleep
+import soundfile as sf
 
 import gradio as gr
 
@@ -194,10 +195,12 @@ def generate_audio(
         for gen in wav:
             audio = gen[0]
             if audio is not None and len(audio) > 0:
-                yield 24000, float_to_int16(audio).T
+                yield (24000, float_to_int16(audio).T),None
             del audio
     else:
-        yield 24000, float_to_int16(wav[0]).T
+        output_file = "output.wav"
+        sf.write(output_file, wav[0], samplerate=24000)  # 保存音频文件
+        yield (24000, float_to_int16(wav[0]).T),output_file
 
 
 def interrupt_generate():

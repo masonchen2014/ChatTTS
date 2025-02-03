@@ -183,6 +183,7 @@ def main():
 
         @gr.render(inputs=[auto_play_checkbox, stream_mode_checkbox])
         def make_audio(autoplay, stream):
+            download_button = gr.File(label="Download Audio")
             audio_output = gr.Audio(
                 label="Output Audio",
                 value=None,
@@ -223,7 +224,7 @@ def main():
                     sample_text_input,
                     sample_audio_code_input,
                 ],
-                outputs=audio_output,
+                outputs=[audio_output,download_button]
             ).then(
                 fn=set_buttons_after_generate,
                 inputs=[generate_button, interrupt_button, audio_output],

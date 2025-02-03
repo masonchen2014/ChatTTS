@@ -7,10 +7,12 @@ vector_quantize_pytorch
 transformers>=4.41.1
 vocos
 IPython
-gradio
+gradio==5.14.0
 pybase16384
 pynini==2.1.5; sys_platform == 'linux'
 WeTextProcessing; sys_platform == 'linux'
 nemo_text_processing; sys_platform == 'linux'
 av
 pydub
+socksio==1.0.0
+soundfile==0.13.1
